@@ -9,6 +9,8 @@ import globalRouter from './routes/globalRouter';
 
 import routes from './routes';
 
+import { localsMiddlewares } from './middlewares';
+
 const app = express();
 
 //view egin settings
@@ -19,6 +21,9 @@ app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
+
+//for using local values
+app.use(localsMiddlewares);
 
 app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);

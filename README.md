@@ -55,4 +55,6 @@
 ### 2. 사용법
 
 - block ==> extends 로 사용가능
--
+- inclde
+
+### 3. res.locals. 를이용한 템플릿이로 정보 보내주기
