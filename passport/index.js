@@ -17,7 +17,7 @@ passport.use(
     {
       clientID: process.env.GH_ID,
       clientSecret: process.env.GH_SC,
-      callbackURL: `http://localhost:4000${routes.githubCallback}`
+      callbackURL: `https://gtube.geoniljang.com${routes.githubCallback}`
     },
     githubCallback
   )
