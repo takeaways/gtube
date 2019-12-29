@@ -73,3 +73,12 @@
 # multer
 
 ### 1. npm i multer
+
+# webpack
+
+### 1. 최신자바스크립트를 사용하면지원하지 않는 브라우져가 있기때문에 사용
+
+- npm i webpack webpack-cli
+- npm install --save-dev extract-text-webpack-plugin@next
+- webpack 을 실행하면 자동으로 webpack.config.js 을 찾아서 실행한다.
+- 서버코드와 연관지어서는 절대 안되며!! 100% 프론트 코드에만 적용해야 한다.

@@ -5,5 +5,7 @@ block content
   .search__header
     h3 검색어 : #{searchingBy}
   .search__videos
+    if videos.length === 0
+      h5 비디오를 찾지 못했습니다.
     each video in videos
       +videoBlock(video)

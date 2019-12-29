@@ -36,7 +36,7 @@ export const deleteVideoById = async id => {
 
 export const getBotsByTerm = async term => {
   try {
-    return await Video.find({ title: { $regex: `${term}` } });
+    return await Video.find({ title: { $regex: `${term}`, $options: 'i' } });
   } catch (error) {
     throw error;
   }

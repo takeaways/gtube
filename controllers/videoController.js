@@ -25,7 +25,7 @@ export const home = async (req, res) => {
 export const search = async (req, res) => {
   const { term: searchingBy = '검색어 없음!' } = req.query;
   const videos = await getBotsByTerm(searchingBy);
-  console.log(videos);
+
   res.render('search', {
     pageTitle: `${searchingBy}`,
     searchingBy,
