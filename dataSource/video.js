@@ -28,7 +28,7 @@ export const updateVideo = async query => {
 
 export const deleteVideoById = async id => {
   try {
-    return await Video.remove({ _id: id });
+    return await Video.deleteOne({ _id: id });
   } catch (error) {
     throw error;
   }
