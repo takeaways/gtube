@@ -1,5 +1,12 @@
-export const home = (req, res) => res.render('home');
-export const search = (req, res) => res.send('search');
+export const home = (req, res) => res.render('home', { pageTitle: '홈' });
+export const search = (req, res) => {
+  const { term: searchingBy = '검색어 없음!' } = req.query;
+
+  res.render('search', {
+    pageTitle: `${searchingBy}`,
+    searchingBy
+  });
+};
 
 export const videos = (req, res) => res.send('videos');
 export const upload = (req, res) => res.send('upload');
