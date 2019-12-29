@@ -17,7 +17,7 @@ router.get(routes.home, home);
 
 //TODO: join
 router.get(routes.join, join);
-router.post(routes.join, postJoin);
+router.post(routes.join, postJoin, postLogin);
 
 //TODO: login
 router.get(routes.login, login);
