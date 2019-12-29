@@ -3,14 +3,15 @@ import { fakevideos } from '../fakedb';
 export const home = (req, res) => {
   res.render('home', {
     pageTitle: '홈',
-    fakevideos
+    videos: fakevideos
   });
 };
 export const search = (req, res) => {
   const { term: searchingBy = '검색어 없음!' } = req.query;
   res.render('search', {
     pageTitle: `${searchingBy}`,
-    searchingBy
+    searchingBy,
+    videos: fakevideos
   });
 };
 
