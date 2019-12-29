@@ -8,7 +8,6 @@ import routes from '../routes';
 
 // import githubSTG from './github';
 
-// import local from './local';
 const GitHubStrategy = Strategy;
 
 passport.use(User.createStrategy());
