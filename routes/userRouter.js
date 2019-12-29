@@ -1,17 +1,13 @@
 import express from 'express';
+import routes from '../routes';
 
-const userRouter = express.Router();
+const router = express.Router();
 
-userRouter.get('/', (req, res) => {
-  res.send('user idnex');
-});
+router.get(routes.users, (req, res) => console.log('video users'));
+router.get(routes.userDetail, (req, res) => console.log('video userDetail'));
+router.get(routes.editProfile, (req, res) => console.log('video editProfile'));
+router.get(routes.changePassword, (req, res) =>
+  console.log('video changePassword')
+);
 
-userRouter.get('/edit', (req, res) => {
-  res.send('user edit');
-});
-
-userRouter.get('/profile', (req, res) => {
-  res.send('user profile');
-});
-
-export default userRouter;
+export default router;
