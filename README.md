@@ -25,7 +25,6 @@
 
 <pre>
 <code>
-
   const between = value => {
     console.log(`${value} 입니다.`);
     return (req, res, next) => {
@@ -35,5 +34,4 @@
 
   app.use(between('짱건일'));
 </code>
-
 </pre>
