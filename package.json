@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node init.js --delay 2",
-    "dev:assets": "webpack -w"
+    "dev:assets": "webpack -w",
+    "dev:assets2": "webpack"
   },
   "repository": {
     "type": "git",
