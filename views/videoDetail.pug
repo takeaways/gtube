@@ -1,4 +1,12 @@
 extends layouts/main
+include mixins/videoBlock
+
 
 block content
-    p Video Detail
+    .video__player
+        video(src=`\\${video.fileUrl}` ,autoplay=true, controls=true)
+    .video__info
+        a(href=routes.editVideo(video.id)) 수정하기
+        h5.video__title=video.title
+        span.video__views=video.views
+        p.video__description=video.description

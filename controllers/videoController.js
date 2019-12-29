@@ -1,9 +1,15 @@
 import routes from '../routes';
 import Video from '../schemas/video';
+import {
+  getVideoById,
+  updateVideo,
+  deleteVideoById,
+  getBotsByTerm
+} from '../dataSource/video';
 
 export const home = async (req, res) => {
   try {
-    const videos = await Video.find({});
+    const videos = await Video.find({}).sort({ _id: -1 });
     return res.render('home', {
       pageTitle: '홈',
       videos
@@ -16,12 +22,14 @@ export const home = async (req, res) => {
     });
   }
 };
-export const search = (req, res) => {
+export const search = async (req, res) => {
   const { term: searchingBy = '검색어 없음!' } = req.query;
+  const videos = await getBotsByTerm(searchingBy);
+  console.log(videos);
   res.render('search', {
     pageTitle: `${searchingBy}`,
     searchingBy,
-    videos: fakevideos
+    videos
   });
 };
 
@@ -45,14 +53,56 @@ export const postUpload = async (req, res) => {
 };
 
 //TODO: video edit
-export const editVideo = (req, res) =>
-  res.render('editVideo', {
-    pageTitle: '비디오 수정하기'
-  });
+export const editVideo = async (req, res) => {
+  try {
+    const video = await getVideoById(req.params.id);
+    if (!video) return res.redirect('/');
+    res.render('editVideo', {
+      pageTitle: video.title + ' 수정하기',
+      video
+    });
+  } catch (error) {}
+};
+export const postEditVideo = async (req, res, next) => {
+  try {
+    const { title, description } = req.body;
+    const query = {
+      id: req.params.id,
+      title,
+      description
+    };
+    await updateVideo(query);
+    res.redirect(routes.videoDetail(req.params.id));
+  } catch (error) {
+    console.error(error);
+    next(error);
+  }
+};
 
 //TODO: videoDetail
-export const videoDetail = (req, res) =>
-  res.render('videoDetail', {
-    pageTitle: '비디오 자세히 보기'
-  });
-export const deleteVideo = (req, res) => res.send('deleteVideo');
+export const videoDetail = async (req, res, next) => {
+  try {
+    const video = await getVideoById(req.params.id);
+    if (!video) {
+      return res.redirect('/');
+    }
+    res.render('videoDetail', {
+      pageTitle: '비디오 자세히 보기',
+      video
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+//TODO:video delete
+export const deleteVideo = async (req, res, next) => {
+  try {
+    await deleteVideoById(req.params.id);
+  } catch (error) {
+    console.error(error);
+    next(error);
+  } finally {
+    res.redirect('/');
+  }
+};
