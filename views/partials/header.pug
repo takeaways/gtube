@@ -1,22 +1,22 @@
 header.header
-  .header__column
-    a(href=routes.home)
-      i.fab.fa-youtube
-  .header__column
-    form(action=routes.search, method="get")
-      input(type="text", placeholder="비디오 검색하기.", name="term")
-  .header__column
-    ul
-      if(!user.isAuthenticated)
-        li
-          a(href=routes.join) 회원가입
-        li
-          a(href=routes.login) 로그인
-      else
-        li
-          a(href=`/videos${routes.upload}`) 업로드
-        li
-          a(href=routes.userDetail(user.id)) #{user.id} 프로필
-        li
-          a(href=routes.logout) 로그아웃
-        
+    .header__wrapper
+        .header__column
+            a(href=routes.home)
+                i.fab.fa-youtube
+        .header__column
+            form(action=routes.search, method="get")
+                input(type="text", placeholder="Search by term...", name="term")
+        .header__column
+            ul
+                if !loggedUser
+                    li
+                        a(href=routes.join) Join
+                    li
+                        a(href=routes.login) Log In
+                else 
+                    li
+                        a(href=`/videos${routes.upload}`) Upload
+                    li
+                        a(href=routes.me) Profile
+                    li
+                        a(href=routes.logout) Log Out

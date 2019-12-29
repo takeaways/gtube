@@ -2,9 +2,13 @@ extends layouts/main
 
 block content
     .form-container
-        form(action=`/videos${routes.upload}`, method="post" , enctype="multipart/form-data")
-            label(for="file") 비디오 선택하기
-            input(type="file", id="file", name="videoFile",accept="video/*")
-            input(type="text", placeholder="비디오 제목.", name="title", required=true)
-            textarea(name="description", placeholder="내용을 입력하세요." ,required=true)
-            input(type="submit", value="업로드")
+        .record-container#jsRecordContainer
+            video#jsVideoPreview
+            button#jsRecordBtn Start Recording
+        form(action=`/videos${routes.upload}`, method="post", enctype="multipart/form-data")
+            div.fileUpload
+                label(for="file") Video File
+                input(type="file", id="file", name="videoFile", required=true, accept="video/*")
+            input(type="text", placeholder="Title", name="title", required=true)
+            textarea(name="description", placeholder="Description", required=true)
+            input(type="submit", value="Upload Video")
