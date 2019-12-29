@@ -16,6 +16,7 @@ const app = express();
 //view egin settings
 app.set('view engine', 'pug');
 app.use('/uploads', express.static('uploads'));
+app.use('/static', express.static('static'));
 //middlewares 에서 next가 있기 때문에 순서대로 적용되고 routes로 내려온다.
 app.use(helmet());
 app.use(morgan('dev'));

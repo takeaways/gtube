@@ -78,6 +78,7 @@
 
 ### 1. 최신자바스크립트를 사용하면지원하지 않는 브라우져가 있기때문에 사용
 
+- 해당 폴더의 webpack을 그냥 사용하도록하자. 더이상 웹펙을 그렇게 사용할 일이 없다.
 - npm i webpack webpack-cli
 - npm install --save-dev extract-text-webpack-plugin@next
 - webpack 을 실행하면 자동으로 webpack.config.js 을 찾아서 실행한다.

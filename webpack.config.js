@@ -3,7 +3,7 @@ const autoprefixer = require('autoprefixer');
 const ExtractCSS = require('extract-text-webpack-plugin');
 
 const MODE_DEV = 'development';
-const MODE_PRO = 'development';
+const MODE_PRO = 'production';
 const ENTRY_FILE = path.resolve(__dirname, 'assets', 'js', 'main.js');
 const OUTPUT_DIR = path.join(__dirname, 'static');
 

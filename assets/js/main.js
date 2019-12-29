@@ -1,3 +1,5 @@
 import '../scss/styles.scss';
 
-console.log('GEllo wo');
+const sss = async () => {
+  console.log('asdasd');
+};
