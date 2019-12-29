@@ -35,3 +35,11 @@
   app.use(between('짱건일'));
 </code>
 </pre>
+
+# MVC 이해하기
+
+### 1. M model : data
+
+### 2. V View : 화면
+
+### 3. C Controller : 처리로직

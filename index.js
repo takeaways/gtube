@@ -3,7 +3,8 @@ import morgan from 'morgan';
 import helmet from 'helmet';
 import cookieParser from 'cookie-parser';
 
-import userRouter from './router';
+import userRouter from './routes/userRouter';
+import videoRouter from './routes/videoRouter';
 
 const app = express();
 
@@ -15,7 +16,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 
 app.use('/user', userRouter);
-app.get('/', (req, res) => res.send('Welcome '));
-app.get('/profile', (req, res) => res.send('Welcome profile'));
+app.use('/video', videoRouter);
 
 export default app;
