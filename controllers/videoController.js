@@ -1,4 +1,3 @@
-import { fakevideos } from '../fakedb';
 import routes from '../routes';
 import Video from '../schemas/video';
 
@@ -33,9 +32,9 @@ export const upload = (req, res) =>
   res.render('upload', { pageTitle: '비디오 업로드' });
 export const postUpload = async (req, res) => {
   const {
-    body: { description, title },
-    file: { path: fileUrl }
+    body: { description, title }
   } = req;
+  const fileUrl = (req.file && req.file.path) || 'nothing';
 
   const newVideo = await Video.create({
     fileUrl,
