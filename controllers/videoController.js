@@ -1,4 +1,5 @@
 import { fakevideos } from '../fakedb';
+import routes from '../routes';
 
 export const home = (req, res) => {
   res.render('home', {
@@ -16,12 +17,25 @@ export const search = (req, res) => {
 };
 
 export const videos = (req, res) => res.send('videos');
-export const upload = (req, res) => res.send('upload');
 
+//TODO: video upload
+export const upload = (req, res) =>
+  res.render('upload', { pageTitle: '비디오 업로드' });
+export const postUpload = (req, res) => {
+  const id = 2313;
+  const title = 'geonil jang video';
+  res.redirect(routes.videoDetail(id));
+};
+
+//TODO: video edit
 export const editVideo = (req, res) =>
   res.render('editVideo', {
     pageTitle: '비디오 수정하기'
   });
 
-export const videoDetail = (req, res) => res.send('videoDetail');
+//TODO: videoDetail
+export const videoDetail = (req, res) =>
+  res.render('videoDetail', {
+    pageTitle: '비디오 자세히 보기'
+  });
 export const deleteVideo = (req, res) => res.send('deleteVideo');

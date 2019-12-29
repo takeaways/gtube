@@ -3,8 +3,8 @@ extends layouts/main
 block content
     .form-container
         form(action=`/videos${routes.upload}`, method="post")
-            label(for="file") Video File
+            label(for="file") 비디오 선택하기
             input(type="file", id="file", name="file")
-            input(type="text", placeholder="Title", name="title")
-            textarea(name="description", placeholder="Description")
-            input(type="submit", value="Upload Video")
+            input(type="text", placeholder="비디오 제목.", name="title")
+            textarea(name="description", placeholder="내용을 입력하세요.")
+            input(type="submit", value="업로드")
