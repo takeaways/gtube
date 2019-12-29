@@ -1,5 +1,5 @@
 import express from 'express';
-
+import passport from 'passport';
 import routes from '../routes';
 import { home, search } from '../controllers/videoController';
 import {
@@ -7,7 +7,8 @@ import {
   postLogin,
   join,
   postJoin,
-  logout
+  logout,
+  postGithubLogIn
 } from '../controllers/userController';
 
 const router = express.Router();
@@ -26,5 +27,14 @@ router.post(routes.login, postLogin);
 //TODO: logout
 router.get(routes.logout, logout);
 router.get(routes.search, search);
+
+router.get(routes.github, passport.authenticate('github'));
+router.get(
+  routes.githubCallback,
+  passport.authenticate('github', {
+    failureRedirect: '/login'
+  }),
+  postGithubLogIn
+);
 
 export default router;

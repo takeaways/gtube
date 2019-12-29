@@ -6,13 +6,12 @@ import session from 'express-session';
 import passport from 'passport';
 import dotenv from 'dotenv';
 dotenv.config();
-
+import './passport';
 import userRouter from './routes/userRouter';
 import videoRouter from './routes/videoRouter';
 import globalRouter from './routes/globalRouter';
 
 import routes from './routes';
-import './passport';
 
 import { localsMiddlewares } from './middlewares';
 

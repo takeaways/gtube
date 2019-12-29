@@ -39,6 +39,7 @@ export const postLogin = passport.authenticate('local', {
 
 //TODO:logout
 export const logout = (req, res) => {
+  req.logout();
   res.redirect(routes.home);
 };
 
@@ -58,4 +59,46 @@ export const userDetail = (req, res) => {
     pageTitle: '프로필',
     id
   });
+};
+
+//FIXME: gitgub
+export const githubCallback = async (
+  accessToken,
+  refreshToken,
+  profile,
+  cb
+) => {
+  try {
+    const {
+      _json: { id, avatar_url: avatarUrl, login, email }
+    } = profile;
+    console.log(profile._json);
+    const user = await User.findOne({
+      email
+    });
+    if (user && email) {
+      console.log('user.>>', user);
+      console.log(id);
+      user.githubId = id;
+      user.save();
+
+      return cb(null, user);
+    } else {
+      console.log('Adadas');
+      const newUser = await User.create({
+        email,
+        name: login,
+        githubId: Number(id),
+        avatarUrl
+      });
+      console.log('newUser.>>', newUser);
+      return cb(null, newUser);
+    }
+  } catch (error) {
+    cb(error);
+  }
+};
+
+export const postGithubLogIn = (req, res) => {
+  res.redirect(routes.home);
 };
