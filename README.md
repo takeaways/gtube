@@ -65,3 +65,11 @@
    재활용하는 방법!
 2. views/mixins/videoBlock
 3. html을 구조화 시킨 아이템이라고 생각하면 이해하기 쉽고 [리엑트 컴포넌트로 생각하면 쉬을 듯]
+
+# 몽고디비 & 몽구스
+
+### 1. npm i mongoose
+
+# multer
+
+### 1. npm i multer
