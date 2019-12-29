@@ -17,5 +17,8 @@ export const editProfile = (req, res) =>
   res.render('editProfile', {
     pageTitle: '프로필 수정'
   });
-export const changePassword = (req, res) => res.render('changePassword');
+export const changePassword = (req, res) =>
+  res.render('changePassword', {
+    pageTitle: '비밀번호 변경'
+  });
 export const userDetail = (req, res) => res.send('userDetail');
