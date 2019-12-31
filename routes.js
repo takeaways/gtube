@@ -4,6 +4,7 @@ const JOIN = '/join';
 const LOGIN = '/login';
 const LOGOUT = '/logout';
 const SEARCH = '/search';
+const ME = '/me';
 
 //users
 const USERS = '/users';
@@ -21,8 +22,11 @@ const DELETE_VIDEO = '/:id/delete';
 
 const GIT = '/auth/github';
 const GIT_CALLBACK = '/auth/github/callback';
+const KAKAO = '/auth/kakao';
+const KAKAO_CALLBACK = '/auth/kakao/callback';
 
 const routes = {
+  me: ME,
   home: HOME,
   join: JOIN,
   login: LOGIN,
@@ -50,7 +54,9 @@ const routes = {
     return DELETE_VIDEO;
   },
   github: GIT,
-  githubCallback: GIT_CALLBACK
+  githubCallback: GIT_CALLBACK,
+  kakao: KAKAO,
+  kakaoCallback: KAKAO_CALLBACK
 };
 
 export default routes;

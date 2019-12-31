@@ -8,11 +8,14 @@ import {
   join,
   postJoin,
   logout,
-  postGithubLogIn
+  postGithubLogIn,
+  postKakaoLogIn,
+  getMe
 } from '../controllers/userController';
 
 const router = express.Router();
-
+//TODO: ME
+router.get(routes.me, getMe);
 //TODO: home
 router.get(routes.home, home);
 
@@ -35,6 +38,15 @@ router.get(
     failureRedirect: '/login'
   }),
   postGithubLogIn
+);
+
+router.get(routes.kakao, passport.authenticate('kakao'));
+router.get(
+  routes.kakaoCallback,
+  passport.authenticate('kakao', {
+    failureRedirect: '/login'
+  }),
+  postKakaoLogIn
 );
 
 export default router;

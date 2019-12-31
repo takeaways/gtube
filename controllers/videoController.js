@@ -7,7 +7,7 @@ import {
   getBotsByTerm
 } from '../dataSource/video';
 
-export const home = async (req, res) => {
+export const home = async (req, res, next) => {
   try {
     const videos = await Video.find({}).sort({ _id: -1 });
     return res.render('home', {

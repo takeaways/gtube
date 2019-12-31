@@ -141,11 +141,11 @@ input {
     outline: none; }
 
 .u-avatar {
-  height: 80px;
+  height: 320px;
   background-color: #ea232c;
-  -webkit-border-radius: 50%;
-     -moz-border-radius: 50%;
-          border-radius: 50%; }
+  -webkit-border-radius: 10%;
+     -moz-border-radius: 10%;
+          border-radius: 10%; }
 
 html,
 body {
@@ -407,9 +407,9 @@ input[type="submit"] {
   .social-login .social-login--github {
     background-color: #444444;
     color: white; }
-  .social-login .social-login--facebook {
-    background-color: #3a5998;
-    color: white; }
+  .social-login .social-login--kakao {
+    background-color: #f7e600;
+    color: #964b00; }
 
 .videoBlock video {
   margin-bottom: 10px;

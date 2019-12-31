@@ -46,4 +46,12 @@ app.use(routes.home, globalRouter);
 app.use(routes.users, userRouter);
 app.use(routes.videos, videoRouter);
 
+app.use((req, res, next) => {
+  res.status(404).redirect(routes.home);
+});
+app.use((error, req, res, next) => {
+  console.error(error);
+  res.status(500).redirect(routes.home);
+});
+
 export default app;
