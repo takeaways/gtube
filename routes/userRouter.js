@@ -10,7 +10,6 @@ import {
 import { uploadAvatar } from '../middlewares';
 
 const router = express.Router();
-
 router.get(routes.editProfile, getEditProfile);
 router.post(routes.editProfile, uploadAvatar, postEditProfile);
 router.get(routes.changePassword, changePassword);
