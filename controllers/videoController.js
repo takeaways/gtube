@@ -62,7 +62,7 @@ export const editVideo = async (req, res) => {
     if (!req.user) {
       return res.redirect(routes.videoDetail(video.id));
     }
-    if (req.user.id !== video.creator._id) {
+    if (req.user.id != video.creator._id) {
       return res.redirect(routes.videoDetail(video.id));
     }
 
