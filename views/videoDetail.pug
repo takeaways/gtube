@@ -1,32 +1,11 @@
-//- extends layouts/main
-//- include mixins/videoBlock
-
-
-//- block content
-//-     .video__player
-//-         video(src=`\\${video.fileUrl}` ,autoplay=true, controls=true)
-//-     .video__info
-//-         a(href=routes.editVideo(video.id)) 수정하기
-//-         h5.video__title=video.title
-//-         span.video__views=video.views
-//-         p.video__description=video.description
-//-     .video__commonts
-//-         if video.comments.length === 1
-//-             span.video__comment-number 1 comment
-//-         else
-//-             span.video__comment-number #{video.comments.length} comments
-
-
 extends layouts/main
 include mixins/videoPlayer
 
 block content
     .video-detail__container
-        +videoPlayer({
-            src:video.fileUrl
-        })
+        +videoPlayer(video)
         .video__info
-            if loggedUser && video.creator.id === loggedUser.id
+            if loggedUser && video.creator._id == loggedUser.id
                 a(href=routes.editVideo(video.id))
                     button Edit video
             h5.video__title=video.title

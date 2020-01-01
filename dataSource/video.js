@@ -4,7 +4,10 @@ const ObjectId = mongoose.Types.ObjectId;
 
 export const getVideoById = async id => {
   try {
-    return await Video.findOne({ _id: ObjectId(id) });
+    const video = await Video.findOne({ _id: ObjectId(id) }).populate(
+      'creator'
+    );
+    return video;
   } catch (error) {
     throw error;
   }

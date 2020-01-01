@@ -9,9 +9,13 @@ const videoSchema = new mongoose.Schema({
     required: 'Title is required'
   },
   description: String,
-  viows: {
+  views: {
     type: Number,
     default: 0
+  },
+  creator: {
+    type: mongoose.Types.ObjectId,
+    ref: 'User'
   },
   createdAt: {
     type: Date,

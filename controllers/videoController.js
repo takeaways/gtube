@@ -47,8 +47,11 @@ export const postUpload = async (req, res) => {
   const newVideo = await Video.create({
     fileUrl,
     title,
-    description
+    description,
+    creator: req.user.id
   });
+  req.user.videos.push(newVideo._id);
+  req.user.save();
   res.redirect(routes.videoDetail(newVideo.id));
 };
 
@@ -56,12 +59,22 @@ export const postUpload = async (req, res) => {
 export const editVideo = async (req, res) => {
   try {
     const video = await getVideoById(req.params.id);
+    if (!req.user) {
+      return res.redirect(routes.videoDetail(video.id));
+    }
+    if (req.user.id !== video.creator._id) {
+      return res.redirect(routes.videoDetail(video.id));
+    }
+
     if (!video) return res.redirect('/');
     res.render('editVideo', {
       pageTitle: video.title + ' 수정하기',
       video
     });
-  } catch (error) {}
+  } catch (error) {
+    console.error(error);
+    return res.redirect(routes.videoDetail(video._id));
+  }
 };
 export const postEditVideo = async (req, res, next) => {
   try {
@@ -83,9 +96,11 @@ export const postEditVideo = async (req, res, next) => {
 export const videoDetail = async (req, res, next) => {
   try {
     const video = await getVideoById(req.params.id);
+
     if (!video) {
       return res.redirect('/');
     }
+
     res.render('videoDetail', {
       pageTitle: '비디오 자세히 보기',
       video
